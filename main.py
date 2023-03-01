@@ -4311,9 +4311,6 @@ def CalculatingWeeklyForDailyTotalDataFrame(df_daily):
 def form_page():
     return render_template("frontend/index.html")
 
-if __name__ == "__main__":
-	app.run(debug = True)
-
 
 
 
