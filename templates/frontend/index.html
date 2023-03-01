@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Interactive Media Form</title>
+    <link rel="stylesheet" href="static/nicepage.css" media="screen">
+<link rel="stylesheet" href="static/Contact.css" media="screen">
+    <script class="u-script" type="text/javascript" src="static/jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="static/nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 5.5.0, nicepage.com">
+    <meta name="referrer" content="origin">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous"
+  />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": ""
+}</script>
+
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Contact">
+    <meta property="og:type" content="website">
+  <meta data-intl-tel-input-cdn-path="intlTelInput/">
+
+
+  <style>
+    input #file-upload-button{
+      padding:0px !important;
+    }
+  </style>
+
+
+
+
+
+</head>
+  <body class="u-body u-xl-mode" data-lang="en" style="scroll-behavior: smooth;">
+    <form action="/latest" method="POST" enctype="multipart/form-data">
+      <input type="text" name="total_raw" value="0" id="total_raw" hidden>
+      
+    
+    <section class="skrollable u-clearfix u-grey-25 u-section-1" id="carousel_0b91">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div id="main_container">
+       
+        </div>
+        <!-- Raw Data  -->
+   
+        <div class="py-5" >
+        <center>
+          <button type="button" onclick="RemoveIdentifier()" id="show_media_details" style="display:none" class="btn btn-outline-danger  rounded p-3" >
+            <i class="fa fa-minus" aria-hidden="true"></i> Media Category
+          </button>
+          <button type="button" onclick="RemoveMedia()" id="show_media" style="display:none" class="btn btn-outline-danger  rounded p-3">
+            <i class="fa fa-minus" aria-hidden="true"></i> Media
+          </button>
+          <button type="button" onclick="RemoveRaw()" id="show_raw" style="display:none" class="btn btn-outline-danger  rounded p-3">
+            <i class="fa fa-minus" aria-hidden="true"></i> Raw File
+          </button>
+          <button type="button" onclick="AddIdentifier()" class="btn btn-danger  rounded p-3"  style="background-color:#A50034;  outline: none; box-shadow: none;">
+            <i class="fa fa-plus" aria-hidden="true"></i> Media Category
+          </button>
+          <button type="button" onclick="AddMedia()" class="btn btn-danger  rounded p-3"  style="background-color:#A50034;  outline: none; box-shadow: none;">
+            <i class="fa fa-plus" aria-hidden="true"></i> Media
+          </button>
+          <button type="button" onclick="AddRaw()" class="btn btn-danger  rounded p-3"  style="background-color:#A50034;  outline: none; box-shadow: none;">
+            <i class="fa fa-plus" aria-hidden="true"></i> Raw File
+          </button>
+          <button type="submit" class="btn btn-dark border-0 rounded p-3"  style="background-color:#6B6B6B; outline: none; box-shadow: none;">Submit</button>
+        </center>
+      </div>
+      </div>
+     
+    </section>
+    
+    
+  </form>
+    
+  <script>
+
+    // 
+
+    let history_obj = [];
+
+      let raw_file = 0;
+      let media_number = 1;
+      let identifier_number = 1;
+      let temp_obj = {}
+      
+      function AddIdentifier(){
+          if (raw_file == 0){
+
+          }
+          else{
+
+          identifier_number+=1;
+          temp_obj["identifier_number"] = identifier_number;
+          document.getElementById(`raw-${raw_file}-media-${media_number}-total-identifiers`).value = identifier_number;
+          console.log(temp_obj);
+            document.getElementById("show_media_details").style.display = "initial";
+            let d=document.createElement('div');
+            d.innerHTML = `
+            <div class="u-align-center u-form u-white u-form-1 mb-0" style="margin-top:0px" id="raw_data_${raw_file}_media_${media_number}_identifier_${identifier_number}">
+              <h4 style="padding-left:40px;color:#A50034;">Additional Identifier</h4>
+        <div class="u-clearfix u-form-spacing-33 u-form-vertical u-inner-form" name="form" style="padding: 50px;">
+      
+         
+         
+          <div class="row"> <h5 for="" class="col-12 " style="padding-left:40px;color:#A50034;">Media Details</h5></div>
+          <div class="u-form-group u-label-left u-form-group-5">
+            <label for="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-name" class="u-label u-spacing-12 u-label-5  py-2">Choose</label>
+            <input type="text" id="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-name"
+            name="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-name" class="u-border-1 u-border-grey-25 u-grey-5 u-input u-input-rectangle u-radius-8 u-input-5">
+          </div>
+          <div class="u-form-group u-form-radiobutton u-label-left u-form-group-6">
+            <label for="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-type" class="u-label u-spacing-12 u-label-6  py-2">Identifier</label>
+            <div class="u-form-radio-button-wrapper">
+              <div class="u-input-row">
+                <input type="radio"name="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-type"
+                value="single" class="u-field-input">
+                <label class="u-field-label py-2">Single</label>
+              </div>
+              <div class="u-input-row">
+                <input  type="radio" name="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-type" value="multiple" class="u-field-input" data-calc="multiple">
+                <label class="u-field-label py-2">Multiple</label>
+              </div>
+            </div>
+          </div>
+          <div class="u-form-group u-form-partition-factor-2 u-label-left u-form-group-7">
+            <label for="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-1" class="u-label u-spacing-12 u-label-7  py-2">Column</label>
+            <input type="text" id="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-1"
+            name="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-1" class="u-border-1 u-border-grey-25 u-grey-5 u-input u-input-rectangle u-radius-8 u-input-6">
+          </div>
+          <div class="u-form-group u-form-partition-factor-2 u-label-left u-form-group-8">
+            <label for="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-1-value" class="u-label u-spacing-12 u-label-8 ">Value of Identifier</label>
+            <input type="text" id="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-1-value"
+            name="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-1-value" class="u-border-1 u-border-grey-25 u-grey-5 u-input u-input-rectangle u-radius-8 u-input-7">
+          </div>
+          <div class="u-form-group u-form-partition-factor-2 u-label-left u-form-group-9">
+            <label for="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-2" class="u-label u-spacing-12 u-label-9  py-2">Column</label>
+            <input type="text" id="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-2"
+            name="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-2" class="u-border-1 u-border-grey-25 u-grey-5 u-input u-input-rectangle u-radius-8 u-input-8">
+          </div>
+          <div class="u-form-group u-form-partition-factor-2 u-label-left u-form-group-10">
+            <label for="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-2-value" class="u-label u-spacing-12 u-label-10 ">Value of Identifier</label>
+            <input type="text" id="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-2-value"
+            name="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-2-value"  class="u-border-1 u-border-grey-25 u-grey-5 u-input u-input-rectangle u-radius-8 u-input-9">
+          </div>
+      
+      
+        </div>
+      </div>
+            `;
+            document.getElementById(`raw_data_${raw_file}_media_${media_number}`).appendChild(d);
+        }
+      }
+      
+
+      
+      // onchange=AddColumn(${raw_file},${media_number},${identifier_number})
+
+      
+      
+   
+      
+      function AddMedia(){
+        if (raw_file == 0){
+          console.log("Cant add this before raw")
+        }
+        else{
+
+        console.log(identifier_number)
+        media_number+=1;
+        document.getElementById(`raw-${raw_file}-total_media`).value = media_number;
+        temp_obj["identifier_number"] = identifier_number
+        history_obj.push(temp_obj);
+
+        console.log(history_obj);
+        
+        identifier_number = 1;
+        temp_obj = {
+          raw_file,
+          media_number,
+          identifier_number
+        }
+        
+        // temp_obj["identifier_number"] = identifier_number
+        // temp_obj["media_number"] = media_number;
+          console.log(temp_obj);
+          document.getElementById("show_media_details").style.display = "none";
+          document.getElementById("show_media").style.display = "initial";
+          let d = document.createElement('div');
+          d.innerHTML = `
+          <div class="u-align-center u-form u-white u-form-1 mb-0" style="margin-top:0px" id="raw_data_${raw_file}_media_${media_number}">
+            <h4 style="padding-left:40px;color:#A50034;">Media</h4>
+        <div class="u-clearfix u-form-spacing-33 u-form-vertical u-inner-form" style="padding: 50px;">
+         
+         
+         
+          <div class="u-form-group u-form-name u-label-left">
+            <label for="raw-${raw_file}-media-${media_number}" class="u-label u-spacing-12 u-label-2  py-2" >Media Name</label>
+            <input type="text" id="raw-${raw_file}-media-${media_number}-name"
+            name="raw-${raw_file}-media-${media_number}-name" class="u-border-1 u-border-grey-25 u-grey-5 u-input u-input-rectangle u-radius-8 u-input-2" >
+          </div>
+          <div class="u-form-group u-form-partition-factor-2 u-label-left u-form-group-3">
+            <label for="raw-${raw_file}-media-${media_number}-total-budget" class="u-label u-spacing-12 u-label-3  py-2">Total Budget</label>
+            <input type="text" id="raw-${raw_file}-media-${media_number}-total-budget"
+            name="raw-${raw_file}-media-${media_number}-total-budget" class="u-border-1 u-border-grey-25 u-grey-5 u-input u-input-rectangle u-radius-8 u-input-3">
+          </div>
+          <div class="u-form-group u-form-partition-factor-2 u-label-left u-form-group-4">
+            <label for="raw-${raw_file}-media-${media_number}" class="u-label u-spacing-12 u-label-4  py-2" >Monthly View KPI</label>
+            <input type="text" id="raw-${raw_file}-media-${media_number}-monthly-view-kpi"
+            name="raw-${raw_file}-media-${media_number}-monthly-view-kpi" class="u-border-1 u-border-grey-25 u-grey-5 u-input u-input-rectangle u-radius-8 u-input-4">
+           
+          </div>
+          <div class="row"> <h5  for="media_details_label" class="col-12 " style="padding-left:40px;color:#A50034;">Media Details</h5></div>
+          <div class="u-form-group u-label-left u-form-group-5">
+            <label  for="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-name" class="u-label u-spacing-12 u-label-5  py-2">Choose</label>
+            <input type="text"  id="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-name"
+            name="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-name" class="u-border-1 u-border-grey-25 u-grey-5 u-input u-input-rectangle u-radius-8 u-input-5">
+          </div>
+          <div class="u-form-group u-form-radiobutton u-label-left u-form-group-6">
+            <label for="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-type" class="u-label u-spacing-12 u-label-6  py-2">Identifier</label>
+            <div class="u-form-radio-button-wrapper">
+              <div class="u-input-row">
+                <input type="radio" name="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-type"
+                value="single" class="u-field-input">
+                <label class="u-field-label py-2">Single</label>
+              </div>
+              <div class="u-input-row">
+                <input type="radio" name="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-type" value="multiple" class="u-field-input" data-calc="multiple">
+                <label class="u-field-label py-2">Multiple</label>
+              </div>
+            </div>
+          </div>
+          <div class="u-form-group u-form-partition-factor-2 u-label-left u-form-group-7">
+            <label for="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-1" class="u-label u-spacing-12 u-label-7  py-2">Column</label>
+            <input type="text" id="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-1"
+            name="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-1" class="u-border-1 u-border-grey-25 u-grey-5 u-input u-input-rectangle u-radius-8 u-input-6">
+          </div>
+          <div class="u-form-group u-form-partition-factor-2 u-label-left u-form-group-8">
+            <label for="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-1-value" class="u-label u-spacing-12 u-label-8 ">Value of Identifier</label>
+            <input type="text" id="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-1-value"
+            name="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-1-value" class="u-border-1 u-border-grey-25 u-grey-5 u-input u-input-rectangle u-radius-8 u-input-7">
+          </div>
+          <div class="u-form-group u-form-partition-factor-2 u-label-left u-form-group-9">
+            <label for="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-2" class="u-label u-spacing-12 u-label-9  py-2">Column</label>
+            <input type="text" placeholder="" id="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-2"
+            name="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-2" class="u-border-1 u-border-grey-25 u-grey-5 u-input u-input-rectangle u-radius-8 u-input-8">
+          </div>
+          <div class="u-form-group u-form-partition-factor-2 u-label-left u-form-group-10">
+            <label for="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-2-value" class="u-label u-spacing-12 u-label-10 ">Value of Identifier</label>
+            <input type="text" id="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-2-value"
+            name="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-2-value" class="u-border-1 u-border-grey-25 u-grey-5 u-input u-input-rectangle u-radius-8 u-input-9">
+            <input type="text" 
+              name="raw-${raw_file}-media-${media_number}-total-identifiers" 
+              id="raw-${raw_file}-media-${media_number}-total-identifiers"  hidden
+              value=${1}>
+          
+          </div>
+      
+      
+        </div>
+      </div>
+          `;
+          document.getElementById(`raw_data_${raw_file}`).appendChild(d);
+        }
+    }
+  
+
+
+      function AddRaw(){
+
+        if (raw_file  > 0){
+          history_obj.push(temp_obj);
+        }
+        raw_file+=1;
+        media_number = 1;
+        identifier_number=1;
+        
+        temp_obj = {
+          "raw_file": raw_file,
+          "media_number": media_number,
+          "identifier_number": identifier_number
+        }
+        document.getElementById("total_raw").value = raw_file
+          console.log(temp_obj);
+
+          document.getElementById("show_media").style.display = "none"; 
+          document.getElementById("show_media_details").style.display= "none";
+          document.getElementById("show_raw").style.display = "initial";
+
+
+
+
+          
+
+
+
+
+
+          let d=document.createElement('div');
+          d.innerHTML = `
+          <div class="u-align-center u-form u-radius-37 u-white u-form-1 my-5 mb-0" id="raw_data_${raw_file}">
+            
+        <div class="u-clearfix u-form-spacing-33 u-form-vertical u-inner-form" style="padding: 50px;">
+        
+   
+          <div class="u-form-group u-label-left u-form-group-1 pe-2">
+              <label  for="raw-${raw_file}" class="u-label u-spacing-12 u-label-1">Raw File</label>
+          
+                  <input type="file" id="raw-${raw_file}" name="raw-${raw_file}" class="u-border-1 u-border-grey-25 u-grey-5 u-input u-input-rectangle u-radius-8 u-input-1">
+          
+            </div>
+          <div class="row m-0" id="raw_data_${raw_file}_media_${media_number}">
+          <div class="u-form-group u-form-name u-label-left">
+            <label for="raw-${raw_file}-media-${media_number}-name" class="u-label u-spacing-12 u-label-2  py-2">Media Name</label>
+            <input type="text" id="raw-${raw_file}-media-${media_number}-name"
+            name="raw-${raw_file}-media-${media_number}-name" class="u-border-1 u-border-grey-25 u-grey-5 u-input u-input-rectangle u-radius-8 u-input-2" >
+          </div>
+          <div class="u-form-group u-form-partition-factor-2 u-label-left u-form-group-3">
+            <label for="raw-${raw_file}-media-${media_number}-total-budget" class="u-label u-spacing-12 u-label-3  py-2">Total Budget</label>
+            <input type="text" placeholder="" id="raw-${raw_file}-media-${media_number}-total-budget"
+            name="raw-${raw_file}-media-${media_number}-total-budget" class="u-border-1 u-border-grey-25 u-grey-5 u-input u-input-rectangle u-radius-8 u-input-3">
+          </div>
+          <div class="u-form-group u-form-partition-factor-2 u-label-left u-form-group-4">
+            <label for="raw-${raw_file}-media-${media_number}" class="u-label u-spacing-12 u-label-4  py-2" >Monthly View KPI</label>
+            <input type="text" placeholder="" id="raw-${raw_file}-media-${media_number}-monthly-view-kpi"
+            name="raw-${raw_file}-media-${media_number}-monthly-view-kpi" class="u-border-1 u-border-grey-25 u-grey-5 u-input u-input-rectangle u-radius-8 u-input-4">
+           
+          </div>
+          <div class="row"> <h5 for="media_details_label" class="m-0 p-0 text-start" style="padding-left:30px!important;color:#A50034;">Media Details</h5></div>
+          <div id="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}" class="row p-0 m-0">
+          <div class="u-form-group u-label-left u-form-group-5">
+            <label for="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-name" class="u-label u-spacing-12 u-label-5  py-2">Choose</label>
+            <input type="text" id="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-name"
+            name="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-name" class="u-border-1 u-border-grey-25 u-grey-5 u-input u-input-rectangle u-radius-8 u-input-5">
+          </div>
+          <div class="u-form-group u-form-radiobutton u-label-left u-form-group-6">
+            <label class="u-label u-spacing-12 u-label-6  py-2" for="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-type">Identifier</label>
+            <div class="u-form-radio-button-wrapper">
+              <div class="u-input-row">
+                <input type="radio" name="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-type"
+                value="single"
+                onchange=AddColumn(${raw_file},${media_number},${identifier_number}) class="u-field-input">
+                <label class="u-field-label   py-2">Single</label>
+              </div>
+              <div class="u-input-row">
+                <input  type="radio" class="u-field-input" name="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-type"
+                value="multiple"
+                onchange=AddColumn(${raw_file},${media_number},${identifier_number})>
+                <label class="u-field-label">Multiple</label>
+              </div>
+            </div>
+          </div>
+          <div class="row" id="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-1">
+          <div class="u-form-group u-form-partition-factor-2 u-label-left u-form-group-7">
+            <label for="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-1" class="u-label u-spacing-12 u-label-7  py-2">Column</label>
+            <input type="text" placeholder="" id="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-1"
+            name="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-1" class="u-border-1 u-border-grey-25 u-grey-5 u-input u-input-rectangle u-radius-8 u-input-6">
+          </div>
+          <div class="u-form-group u-form-partition-factor-2 u-label-left u-form-group-8">
+            <label for="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-1-value" class="u-label u-spacing-12 u-label-8 ">Value of Identifier</label>
+            <input type="text" placeholder="" id="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-1-value"
+            name="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-1-value" class="u-border-1 u-border-grey-25 u-grey-5 u-input u-input-rectangle u-radius-8 u-input-7">
+          </div>
+          <div class="u-form-group u-form-partition-factor-2 u-label-left u-form-group-9">
+            <label for="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-2" class="u-label u-spacing-12 u-label-9  py-2">Column</label>
+            <input type="text" id="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-2"
+            name="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-2" class="u-border-1 u-border-grey-25 u-grey-5 u-input u-input-rectangle u-radius-8 u-input-8">
+          </div>
+          <div class="u-form-group u-form-partition-factor-2 u-label-left u-form-group-10">
+            <label for="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-2-value" class="u-label u-spacing-12 u-label-10 ">Value of Identifier</label>
+            <input type="text" id="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-2-value"
+            name="raw-${raw_file}-media-${media_number}-identifier-${identifier_number}-column-2-value" class="u-border-1 u-border-grey-25 u-grey-5 u-input u-input-rectangle u-radius-8 u-input-9">
+            <input type="text" 
+            name="raw-${raw_file}-total_media" 
+            id="raw-${raw_file}-total_media"  hidden
+            value=${1}
+            />
+            <input type="text" 
+            name="raw-${raw_file}-media-${media_number}-total-identifiers" 
+            id="raw-${raw_file}-media-${media_number}-total-identifiers"  hidden
+            value=${1}>
+          </div>
+        </div>
+      </div>
+      </div>
+        </div>
+      </div>
+          `;
+          document.getElementById("main_container").appendChild(d);
+      }
+      
+      function RemoveIdentifier(){
+        document.getElementById(`raw_data_${raw_file}_media_${media_number}_identifier_${identifier_number}`).remove();
+          identifier_number-=1;
+
+     
+          temp_obj["identifier_number"] = identifier_number;
+          document.getElementById(`raw-${raw_file}-media-${media_number}-total-identifiers`).value = identifier_number;
+
+          console.log(temp_obj);
+          if (identifier_number == 1 || (media_number == 1 && identifier_number == 1)){
+            document.getElementById(`show_media_details`).style.display = "none";
+          }
+      }
+      function RemoveRaw(){
+          document.getElementById(`raw_data_${raw_file}`).remove();
+          raw_file-=1;
+          document.getElementById("total_raw").value = raw_file
+          console.log("This is history: ",history_obj.at(-1));
+          temp_obj = history_obj.at(-1);
+          history_obj.pop();
+          console.log("This is temp_obj: ",temp_obj);
+          try{
+          media_number = temp_obj["media_number"];
+          identifier_number = temp_obj["identifier_number"];
+          if (identifier_number > 1){
+            document.getElementById("show_media_details").style.display = "initial";
+          }
+          else{
+            document.getElementById("show_media_details").style.display = "none";
+          }
+            if (media_number > 1){
+              document.getElementById(`show_media`).style.display = "initial";
+            } 
+            else {
+              document.getElementById(`show_media`).style.display = "none";
+            }
+         
+          console.log(identifier_number);
+          if (raw_file == 0){
+            document.getElementById(`show_raw`).style.display = "none";
+            document.getElementById(`show_media`).style.display = "none";
+            document.getElementById(`show_media_details`).style.display = "none";
+          }
+        }
+          catch(e){
+            document.getElementById(`show_raw`).style.display = "none";
+            document.getElementById(`show_media`).style.display = "none";
+            document.getElementById(`show_media_details`).style.display = "none";
+            
+          }
+      }
+
+      function RemoveMedia(){
+          console.log("Remove Media fired ")
+          console.log()
+          document.getElementById(`raw_data_${raw_file}_media_${media_number}`).remove();
+          media_number-=1;
+          document.getElementById(`raw-${raw_file}-total_media`).value = media_number;
+          temp_obj = history_obj.at(-1);
+          history_obj.pop();
+          media_number = temp_obj["media_number"]
+          identifier_number = temp_obj["identifier_number"]
+          console.log(identifier_number)
+          console.log(temp_obj);
+          if (identifier_number > 1){
+            document.getElementById('show_media_details').style.display = "initial";
+          }
+          if (media_number == 1){
+            document.getElementById(`show_media`).style.display = "none";
+            
+          }
+        }
+      
+  </script> 
+   <script
+   src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+   integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+   crossorigin="anonymous"
+ ></script>
+ <script
+   src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+   integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+   crossorigin="anonymous"
+ ></script>   
+</body>
+
+
+
+
+</html>

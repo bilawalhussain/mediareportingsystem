@@ -1,0 +1,78 @@
+{% extends "default.html" %}
+{%block title%}
+Login
+{%endblock%}
+{%block Form %}
+    <form id="user_login" method="post" class="border rounded p-5">
+        <h2 class="text-center">Login</h2>
+        <div class="row" id="alerts">
+        </div>
+        <div class="row mt-2 form-group">
+            
+                <label class="col-12 p-0  form-label" for="username">Username</label>
+                <input class="col-12  form-control" type="text" id="username" name="username" placeholder="hsad" required/>
+        </div>
+        <div class="row mt-2 form-group">
+                <label class="col-12 p-0 form-label" for="password">Password</label>
+                <input class="col-12  form-control" type="password" id="password" name="password" placeholder="*****" required/>
+        </div>
+        
+        <div class="row mt-2 d-flex justify-content-start">
+            <input class="col-auto p-0 " type="checkbox" name="remember_me" id="remember_me">
+            <label class="col" for="remember_me" >Remember me</label>
+        </div>
+        <div class="row mt-4 row">
+            
+            <button class="col btn btn-success rounded" type="submit">Login</button>
+        </div>
+        <div class="row mt-4">
+            <label for="already">Don't have an account? <a href="/signup">Signup</a></label>
+
+        </div>
+    </form>
+{%endblock%}
+
+{%block Scripts%}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#user_login').on('submit',function(e){
+            e.preventDefault();
+            let sendReq = $.ajax({
+            data : {
+                username : $('#username').val(),
+                password : $('#password').val(),
+            },
+            type : 'POST',
+            url : '/login'
+            });
+         
+            sendReq.done(function(data){
+            if (data.status == 200){
+                // console.log(data);
+                document.getElementById("alerts").innerHTML = 
+                    `<div class="alert alert-success" role="alert">
+                    ${data.message}
+                    </div>`
+                window.location.href = "{{url_for('index')}}";
+            }
+
+            });
+            sendReq.fail(function(data){
+                if (data.responseJSON.status == 400){
+                    document.getElementById("alerts").innerHTML = 
+                            `<div class="alert alert-danger" role="alert">
+                            ${data.responseJSON.message}
+                            </div>`
+                }
+                else if (data.responseJSON.status == 500){
+                    document.getElementById("alerts").innerHTML = 
+                            `<div class="alert alert-warning" role="alert">
+                            ${data.responseJSON.message}
+                            </div>`
+                }
+          
+            })
+        });
+    });
+</script>
+{%endblock%}

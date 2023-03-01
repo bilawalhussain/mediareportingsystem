@@ -1,0 +1,91 @@
+{% extends "default_.html" %}
+{%block title%}Reports
+{%endblock%}
+{%block Contents%}
+        <h1>Reports</h1>
+        <form action="/reports" method="post" enctype="multipart/form-data">
+            <!-- <div class="form-group my-3">
+                <label for="gdn" class="form-label">GDN <span class="text-danger">*</span></label>
+                <input type="file" name="gdn" id="gdn" class="form-control" >
+            </div>
+            <div class="form-group my-3">
+                <label for="fb_instagram" class="form-label">Facebook and Instagram <span class="text-danger">*</span></label>
+                <input type="file" name="fb_instagram" id="fb_instagram" class="form-control" >
+            </div>
+            <div class="form-group my-3">
+                <label for="snapchat" class="form-label">Snapchat <span class="text-danger">*</span></label>
+                <input type="file" name="snapchat" id="snapchat" class="form-control" >
+            </div>
+            <div class="form-group my-3">
+                <label for="fb_boostup" class="form-label">Fb Boostup <span class="text-danger">*</span></label>
+                <input type="file" name="fb_boostup" id="fb_boostup" class="form-control" required>
+            </div> -->
+            <div class="form-group my-3">
+                <label for="youtube_trueview" class="form-label">Upload your Report <span class="text-danger">*</span></label>
+                <input type="file" name="youtube_trueview" id="youtube_trueview" class="form-control" required>
+            </div>
+   
+            <!-- <div class="form-group my-3 ">
+                <label for="uac" class="form-label">UAC <span class="text-danger">*</span></label>
+                <input type="file" name="uac" id="uac" class="form-control" >
+            </div> -->
+            <div class="row my-3 mt-5">
+                <div class="col form-group ">
+                    <h4>Phase 1</h4>
+                </div>
+                <div class="col form-group">
+                    <h4>Phase 2</h4>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col-6 form-group ">
+                    <label for="phase_1" class="form-label">Deadline <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="phase_1" name="phase_1" placeholder="Phase 1 deadline" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+                </div>
+                <div class="col-6 form-group">
+                    <label for="phase_2" class="form-label">Deadline <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="phase_2" name="phase_2" placeholder="Phase 2 deadline" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col form-group ">
+                    <label for="phase_1_budget" class="form-label">Budget <span class="text-danger">*</span></label>
+                    <input type="number" id="phase_1_budget" min="1" class="form-control" name="phase_1_budget" required >
+                </div>
+                <div class="col form-group">
+                    <label for="phase_2_budget" class="form-label">Budget <span class="text-danger">*</span></label>
+                    <input type="number" id="phase_2_budget"min="1" class="form-control" name="phase_2_budget" required>
+                </div>
+            </div>
+            <div class="row my-3" id="monthly_visit_kpi">
+                <div class="col form-group ">
+                    <label for="monthly_visit_kpi_w1" class="form-label">Monthly Visit KPI W1</label>
+                    <input type="text" id="monthly_visit_kpi_w1" class="form-control" name="monthly_visit_kpi_w1">
+                </div>
+                <div class="col form-group">
+                    <label for="monthly_visit_kpi_w2" class="form-label">Monthly Visit KPI W2</label>
+                    <input type="text" id="monthly_visit_kpi_w2" class="form-control" name="monthly_visit_kpi_w2">
+                </div>
+            </div>
+            <div class="row my-3" id="monthly_view_kpi">
+                <div class="col form-group ">
+                    <label for="monthly_view_kpi_w1" class="form-label">Monthly View KPI W1</label>
+                    <input type="text" id="monthly_view_kpi_w1" class="form-control" name="monthly_view_kpi_w1">
+                </div>
+                <div class="col form-group">
+                    <label for="monthly_view_kpi_w2" class="form-label">Monthly View KPI W2</label>
+                    <input type="text" id="monthly_view_kpi_w2" class="form-control" name="monthly_view_kpi_w2">
+                </div>
+            </div>
+            <div class="form-group my-2">
+                    <label for="filename" class="form-label">Filename <span class="text-danger">*</span></label>
+                    <input type="text" id="filename" name="filename" class="form-control" placeholder="Generated file name" required>
+            </div>
+            <div class="form-group my-3">
+                <button type="submit" class="lg-button">Generate Report</button>
+            </div>
+
+        </form>
+        
+
+{%endblock%}

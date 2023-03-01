@@ -1,0 +1,53 @@
+.login-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:90vh;
+    
+
+}
+.links{
+    color:#ffffff !important;
+}
+.lg-button {
+    background-color:#a50034; 
+    color:#fff;
+    border: 0;
+    cursor: pointer;
+
+    display: inline-block;
+    min-width: 80px;
+    padding: 11px 23px;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    white-space: normal;
+    cursor: pointer;
+}
+.lg-button:hover {
+    background-color:#dc3545; 
+    color:#fff;
+    border: 0;
+    cursor: pointer;
+
+    display: inline-block;
+    min-width: 80px;
+    padding: 11px 23px;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    white-space: normal;
+    cursor: pointer;
+}
